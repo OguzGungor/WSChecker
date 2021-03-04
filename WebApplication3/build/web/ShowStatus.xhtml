@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+
+    <h:body style ="background-color: #0F4351;">
+        <h:form >
+            <h3 style=" text-align: center; color : #37CABA;font-size: 50px;font-weight: bold;font: Berlin Sans FB Demi;"
+                >WSSupervisory
+
+                <p:dataList value="#{newJSFManagedBean.all}" 
+                            var="wsList2" 
+                            type="definition"
+                            style ="background-color: #0F4351;"
+                            >
+                    <f:facet name="description">
+
+                        <h3 style="color : #37CABA; background-color: #0F4351; font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;">WS : #{wsList2.WSName} 
+                            <p:graphicImage width="30px" 
+                                            library="images" 
+                                            name="#{wsList2.status}.png"
+                                            />                                
+                        </h3>
+                        <p:dataList value="#{newJSFManagedBean.getMethods(wsList2.ID)}" 
+                                    var="method" 
+                                    type="definition"
+                                    style ="background-color: #0F4351;">
+                            <f:facet name="description">
+                                <h3 style="color: #0F4351; font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;">Method : #{method.operationName}
+                                    <br>    </br>
+                                    <p:dataList value="#{newJSFManagedBean.getParameterNames(wsList.WSID,method.ID)}" 
+                                                var="parameter" 
+                                                type="definition"
+                                                style ="background-color: #0F4351;">
+                                        <f:facet name="description">
+                                            <h4 style="color: #0F4351; font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;" >parameter : #{parameter}
+                                                <h:form enctype="multipart/form-data">
+                                                    <br></br>
+                                                    <p:panel>
+                                                        <p:inputTextarea binding="#{input1}" rows="1" queryDelay="750" minQueryLength="4" />
+                                                        Output : #{newJSFManagedBean.getOutput(input1.value,wsList2.ID, method.ID)}
+                                                    </p:panel>
+                                                </h:form>
+                                            </h4>
+                                        </f:facet>
+
+                                    </p:dataList>
+                                    <p:commandButton  ajax="false" action="#{newJSFManagedBean.getOutput(input1.value,wsList2.ID,method.ID)}" value="execute" update="panel" ></p:commandButton>
+
+                                </h3>
+                            </f:facet>
+                        </p:dataList>
+                    </f:facet>
+                </p:dataList>
+
+                <div class="p-col">
+                    <p:commandButton value="Back" 
+                                     ajax="false" 
+                                     action="index?faces-redirect=true" 
+                                     style="left : 40%; align-content: center; background: #37CABA ;color : #0F4351;font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;" 
+                                     />
+                </div>
+
+            </h3>
+        </h:form>
+    </h:body>
+
+</html>
+

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>WSSupervisory</title>
+    </h:head>
+    
+    <h:body style ="background-color: #0F4351;" >
+        
+        <h3 style=" text-align: center; color : #37CABA;font-size: 50px;font-weight: bold;font: Berlin Sans FB Demi;" >WSSupervisory</h3>
+        
+        <h:form> 
+            
+            <div class="p-grid p-dir-col-rev">
+                
+                <div class="p-col">  
+                    <p:commandButton value="addWS" 
+                                     ajax="false" 
+                                     action= "addWS?faces-redirect=true" 
+                                     style = "left : 40%;align-items: center ;align-content: center;background: #37CABA ;color : #0F4351;font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;"/>
+                </div>
+                
+                <div class="p-col">
+                    <p:commandButton value="removeWS" 
+                                     ajax="false" 
+                                     action="removeWS?faces-redirect=true" 
+                                     style="left : 40%;align-content: center; background: #37CABA ;color : #0F4351;font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;"/>
+                </div>
+                                
+                <div class="p-col">
+                    <p:commandButton value="ShowStatus" 
+                                     ajax="false" 
+                                     action="ShowStatus?faces-redirect=true" 
+                                     style="left : 40%; align-content: center; background: #37CABA ;color : #0F4351;font-size: 25px;font-weight: bold;font: Berlin Sans FB Demi;" />
+                </div>
+                
+            </div>
+            
+        </h:form>
+        
+    </h:body>
+    
+</html>
+
